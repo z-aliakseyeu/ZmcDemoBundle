@@ -1,0 +1,12 @@
+{% block tagging_widget %}
+ 	{% spaceless %}
+		{{ form_widget(form, {'attr': {'class': 'chosen-modify'}}) }}
+		<script type="text/javascript">
+	  		$(document).ready(function() {
+	  			$(".chosen-modify").chosen({
+	  				'placeholder_text': '{{ placeholder|trans }}'
+	  			});
+	  		});
+		</script>
+	{% endspaceless %}
+{% endblock %}
