@@ -6,8 +6,16 @@
 
     <services>
         <service id="zmc_demo.form.type.tagging" class="Zmc\DemoBundle\Form\Type\TaggingType">
+            <argument type="service" id="tagging.type.subscriber" />
             <tag name="form.type" alias="tagging" />
         </service>
+        <service id="occupation.popularity.subscriber" class="Zmc\DemoBundle\EventListener\OccupationPopularitySubscriber">
+            <argument type="service" id="tagging.type.subscriber" />
+            <tag name="doctrine.event_subscriber" connection="default" />
+        </service>
+
+        <service id="tagging.type.subscriber" class="Zmc\DemoBundle\Form\Event\TaggingTypeSubscriber" />
+
     </services>
     
 </container>

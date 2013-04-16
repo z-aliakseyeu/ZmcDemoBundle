@@ -1,6 +1,19 @@
 {% block tagging_widget %}
  	{% spaceless %}
-		{{ form_widget(form, {'attr': {'class': 'chosen-modify'}}) }}
+ 		{% if form.popular is defined %}
+ 			<ul>
+			{% for child in form.popular %}
+				<li>
+					{{ form_widget(child) }}
+					{{ form_label(child) }}
+				</li>
+			{% endfor %}
+			</ul>
+			{{ form_widget(form.other, {'attr': {'class': 'chosen-modify'}}) }}
+ 		{% else %}
+			{{ form_widget(form, {'attr': {'class': 'chosen-modify'}}) }}
+		{% endif %}
+
 		<script type="text/javascript">
 	  		$(document).ready(function() {
 	  			$(".chosen-modify").chosen({

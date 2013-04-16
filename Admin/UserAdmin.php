@@ -15,10 +15,11 @@ class UserAdmin extends Admin
             ->add('username')
             ->add('occupations', 'tagging', array(
                 'class' => 'ZmcDemoBundle:Occupation',
-                'popular_limit' => 2,
+                'popular_limit' => 1,
             ))
             ->add('avatar_file', 'file', array(
                 'property_path' => 'avatarFile',
+                'required' => false,
             ))
         ;
     }
